@@ -1,0 +1,18 @@
+{
+  "name": "webpont/test",
+  "description": "Webpont test task.",
+  "license": "proprietary",
+  "type": "library",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+
+  "config": {
+    "sort-packages": true
+  },
+
+  "autoload": {
+    "psr-4": {
+      "Webpont\\Test\\": "src"
+    }
+  }
+}
