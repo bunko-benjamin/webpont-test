@@ -8,8 +8,18 @@
             </div>
         <?php } ?>
     </div>
+
     <div class="button">
-        <button type="button">Load more</button>
+        <?php
+            $from = count($numbers);
+            if (in_array($from, $states)) {
+                $limit = $steps[0];
+            } else {
+                $limit = $steps[1];
+            }
+        ?>
+        <a href="/?from=1&limit=<?php echo ($from + $limit); ?>" class="submit<?php if ($from >= 100) { ?> hidden<?php } ?>">Load more</a>
+
     </div>
 </div>
 </body>

@@ -31,11 +31,13 @@ class TestController extends AbstractController
         $numbers     = $testService->getNumbers($from, $limit);
         $response    = $this->container->get(ResponseInterface::class);
         $steps       = [5, 10];
+        $states      = [10, 25, 40, 55, 70, 85];
 
         return $response->withStatus(HttpStatus::HTTP_OK)->fromTemplate('index', [
             'title'   => 'Diamond grid',
             'numbers' => $numbers,
-            'steps' => $steps
+            'steps' => $steps,
+            'states' => $states
         ]);
     }
 

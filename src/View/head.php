@@ -69,10 +69,16 @@
         padding-top: 15px;
     }
 
-    button {
+    a.submit {
         border: none;
         background: #cccccc;
         border-radius: 5px;
         padding: 10px;
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 14px;
+    }
+    a.submit.hidden {
+        display: none;
     }
 </style>
