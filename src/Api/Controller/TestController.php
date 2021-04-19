@@ -30,10 +30,12 @@ class TestController extends AbstractController
         $limit       = isset($_GET['limit']) ? $_GET['limit'] : 10;
         $numbers     = $testService->getNumbers($from, $limit);
         $response    = $this->container->get(ResponseInterface::class);
+        $steps       = [5, 10];
 
         return $response->withStatus(HttpStatus::HTTP_OK)->fromTemplate('index', [
             'title'   => 'Diamond grid',
-            'numbers' => $numbers
+            'numbers' => $numbers,
+            'steps' => $steps
         ]);
     }
 
