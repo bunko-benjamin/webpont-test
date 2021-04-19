@@ -69,7 +69,7 @@
         padding-top: 15px;
     }
 
-    a.submit {
+    a#submit {
         border: none;
         background: #cccccc;
         border-radius: 5px;
@@ -78,7 +78,7 @@
         color: #ffffff;
         font-size: 14px;
     }
-    a.submit.hidden {
+    a#submit.hidden {
         display: none;
     }
 </style>

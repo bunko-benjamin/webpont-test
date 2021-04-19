@@ -8,7 +8,6 @@
             </div>
         <?php } ?>
     </div>
-
     <div class="button">
         <?php
             $from = count($numbers);
@@ -18,8 +17,9 @@
                 $limit = $steps[1];
             }
         ?>
-        <a href="/?from=1&limit=<?php echo ($from + $limit); ?>" class="submit<?php if ($from >= 100) { ?> hidden<?php } ?>">Load more</a>
-
+        <a href="/?from=1&limit=<?php echo ($from + $limit); ?>" id="submit"<?php if ($from >= 100) { ?> class="hidden"<?php } ?>>Load more</a>
     </div>
 </div>
+<script defer src="/src/js/jquery-3.5.0.min.js"></script>
+<script defer src="/src/js/site.js"></script>
 </body>
