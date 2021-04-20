@@ -25,5 +25,6 @@
     var states = <?php echo json_encode($states); ?>;
 </script>
 <script defer src="/src/js/jquery-3.5.0.min.js"></script>
+<script defer src="/src/js/js.cookie.js"></script>
 <script defer src="/src/js/site.js"></script>
 </body>

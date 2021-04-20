@@ -1,21 +1,41 @@
 var Site = {
+    items: [],
+    cookie: 'DiamondGridSate',
     Setup: function () {
+        Site.CheckPrevSession();
+    },
+    CheckPrevSession: function () {
+        var cookie = Cookies.get(Site.cookie);
+        if (cookie){
+            var items = JSON.parse(cookie);
+            Site.UpdateItems(items, 10 + items.length);
+        }
         $('#submit').on('click', function (e) {
             e.preventDefault();
             Site.LoadMore($(this));
         });
     },
+    SetSession: function (from) {
+        Cookies.set(Site.cookie, from);
+    },
     LoadMore: function (el) {
         var from = el.data('from');
         var limit = el.data('limit');
         $.getJSON('/get-data/' + (from + 1) + '/' + limit, function(data) {
-            var items = [];
-            $.each(data, function(key, val) {
-                items.push(Site.GetItem(val));
-            });
-            $('.grid').append(items);
-            Site.UpdateLink(from + limit)
+            Site.UpdateItems(data, from + limit);
         });
+    },
+    UpdateItems: function (data, val) {
+        var items = [];
+        var temp = [];
+        $.each(data, function(k, i) {
+            items.push(Site.GetItem(i));
+            temp.push(i);
+        });
+        $('.grid').append(items);
+        Site.items = Site.items.concat(temp);
+        Site.UpdateLink(val);
+        Site.SetSession(Site.items);
     },
     UpdateLink: function (from) {
         var limit;
@@ -25,8 +45,7 @@ var Site = {
             limit = steps[1];
         }
 
-        $('#submit').data('from', from);
-        $('#submit').data('limit', limit);
+        $('#submit').data('from', from).data('limit', limit);
 
         if (from >= 100) {
             Site.HideSubmit(true);
