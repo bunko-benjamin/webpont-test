@@ -17,9 +17,13 @@
                 $limit = $steps[1];
             }
         ?>
-        <a href="/?from=1&limit=<?php echo ($from + $limit); ?>" id="submit"<?php if ($from >= 100) { ?> class="hidden"<?php } ?>>Load more</a>
+        <a href="/?from=1&limit=<?php echo ($from + $limit); ?>" data-from="<?php echo $from; ?>" data-limit="<?php echo $limit; ?>" id="submit"<?php if ($from >= 100) { ?> class="hidden"<?php } ?>>Load more</a>
     </div>
 </div>
+<script>
+    var steps = <?php echo json_encode($steps); ?>;
+    var states = <?php echo json_encode($states); ?>;
+</script>
 <script defer src="/src/js/jquery-3.5.0.min.js"></script>
 <script defer src="/src/js/site.js"></script>
 </body>
